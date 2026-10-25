@@ -19,17 +19,17 @@
   },
   "dependencies": {
     "@acme/mcp-notes": "workspace:*",
-    "@miragon/pulse-analytics-connector": "0.21.0",
-    "@miragon/pulse-camunda7-connector": "0.21.0",
-    "@miragon/pulse-widget-shell": "0.21.0",
+    "@miragon/pulse-analytics-connector": "0.22.0",
+    "@miragon/pulse-camunda7-connector": "0.22.0",
+    "@miragon/pulse-widget-shell": "0.22.0",
     "@miragon/mcp-toolkit-core": "2.8.1",
     "mcp-use": "2.7.3",
-    "zod": "4.5.4"
+    "zod": "4.6.6"
   },
   "devDependencies": {
     "@mcp-use/client": "2.4.2",
     "@miragon/mcp-toolkit-ui": "2.8.1",
-    "@modelcontextprotocol/client": "2.2.0",
+    "@modelcontextprotocol/client": "2.3.0",
     "@tailwindcss/vite": "4.3.3",
     "@types/node": "22.19.15",
     "@types/react": "19.2.17",
@@ -43,7 +43,7 @@
     "react-dom": "19.2.8",
     "tailwindcss": "4.3.3",
     "typescript": "5.9.3",
-    "vite": "8.0.16",
+    "vite": "8.1.6",
     "vitest": "4.1.4"
   }
 }

@@ -1,6 +1,6 @@
 > [!NOTE]
 > Read-only mirror of [`templates/composed-server`](https://github.com/Miragon/pulse/tree/main/templates/composed-server)
-> in [Miragon/pulse](https://github.com/Miragon/pulse), synced on every release (currently v0.21.0).
+> in [Miragon/pulse](https://github.com/Miragon/pulse), synced on every release (currently v0.22.0).
 > Please open issues and pull requests there.
 
 # Pulse starter
@@ -38,6 +38,7 @@ pnpm install          # once, then commit pnpm-lock.yaml (the build uses --froze
 docker build -t my-mcp-server .
 docker run -p 127.0.0.1:8400:8400 \
   -e CAMUNDA_BASE_URL=http://host.docker.internal:8410/engine-rest \
+  -e CAMUNDA_ENGINE_FLAVOR=cibseven \
   -e PROMETHEUS_URL=http://host.docker.internal:8460 \
   my-mcp-server
 ```
