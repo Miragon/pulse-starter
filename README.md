@@ -1,6 +1,6 @@
 > [!NOTE]
 > Read-only mirror of [`templates/composed-server`](https://github.com/Miragon/pulse/tree/main/templates/composed-server)
-> in [Miragon/pulse](https://github.com/Miragon/pulse), synced on every release (currently v0.25.0).
+> in [Miragon/pulse](https://github.com/Miragon/pulse), synced on every release (currently v0.26.0).
 > Please open issues and pull requests there.
 
 # Pulse starter
