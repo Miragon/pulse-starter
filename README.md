@@ -1,6 +1,6 @@
 > [!NOTE]
-> Read-only mirror of [`templates/composed-server`](https://github.com/Miragon/pulse/tree/v0.27.1/templates/composed-server)
-> in [Miragon/pulse](https://github.com/Miragon/pulse) at v0.27.1. Open issues and pull requests there.
+> Read-only mirror of [`templates/composed-server`](https://github.com/Miragon/pulse/tree/v0.28.0/templates/composed-server)
+> in [Miragon/pulse](https://github.com/Miragon/pulse) at v0.28.0. Open issues and pull requests there.
 >
 > Created your repository from this template? It does not update itself.
 > Each [release of this mirror](https://github.com/Miragon/pulse-starter/releases)
@@ -19,8 +19,7 @@
 
 Build your own MCP server on the published `@miragon/pulse-*` modules of
 [Pulse](https://github.com/Miragon/pulse) (Camunda 7 / CIB seven BPM operations
-and Prometheus-backed process analytics, both with interactive widgets) and add
-modules for your own systems.
+with interactive widgets) and add modules for your own systems.
 `modules/mcp-notes` is a small example module that shows the whole pattern;
 copying it is how you start yours.
 
@@ -35,42 +34,34 @@ deploy.
 
 Prerequisites:
 
-- Node.js 22.22.2 or later (`engines` in `package.json`)
+- Node.js 22 from 22.23.4, 24 from 24.22.1, or 26.12.1 and later (`engines` in `package.json`, the
+  range the MCP Inspector `pnpm dev` starts asks for)
 - pnpm 10.32.1 (`packageManager`): `corepack enable`; Node.js 25+ has none: `npm i -g pnpm@10.32.1`
 - Docker, for the engine in `compose.yaml` (optional)
 
 ```bash
 pnpm install
 cp .env.example .env  # the settings of the engine in compose.yaml; `pnpm dev` loads it
-pnpm dev              # MCP endpoint on :8400/mcp, inspector on :8400/mcp/inspector
+pnpm dev              # MCP endpoint on :8400/mcp, plus the MCP Inspector (it prints its URL)
 ```
 
 No engine yet? `docker compose up -d`, then `pnpm dev`. The
 [`compose.yaml`](compose.yaml) starts a CIB seven engine on `localhost:8410`
 with its invoice example (login `demo`/`demo`), the engine the copied `.env`
-points at. It serves the engine tools only, so the copied `.env` leaves
-analytics off (`MCP_ACTIVE_MODULES=engine,notes`): that engine has no Prometheus
-to read. Analytics needs the metrics and the Prometheus of the
-[Pulse playground](https://github.com/Miragon/pulse/tree/main/playground),
-which runs with Node.js, pnpm and Docker only:
-`git clone https://github.com/Miragon/pulse && cd pulse && pnpm stack:up`,
-then uncomment `ENGINE_ID` and `PROMETHEUS_URL` in `.env` and add `analytics`
-to its `MCP_ACTIVE_MODULES`. The playground's engine takes port 8410 too, so
-run one of the two.
+points at (`MCP_ACTIVE_MODULES=engine,notes`).
 
 For your own engine set `ENGINE_BASE_URL`, `ENGINE_FLAVOR`,
-`ENGINE_AUTH_TYPE` with its credentials, and `ENGINE_ID` to an id of yours
-(with metrics, the `engine_id` they carry); with a Prometheus also
-`PROMETHEUS_URL` and `analytics` in `MCP_ACTIVE_MODULES`. `.env.example`
-explains each.
+`ENGINE_AUTH_TYPE` with its credentials, and `ENGINE_ID` to an id of yours.
+`.env.example` explains each.
 
 The server's own log lines start with `[acme-mcp]`, and a warning among them
-names what to fix. `pnpm dev` prints more around them, all expected: the Vite
-build output, `[mcp-use] created mcp-env.d.ts`,
-`[mcp-use] views directory not configured.`,
-`[acme-mcp] mcp-use dev: the CLI checks Host …` (a dev-only note, not a warning)
-and `[inspector] [OAuth BFF] Mounted at …`. A `[mcp-use] reload failed` line is
-an error.
+names what to fix. `pnpm dev` runs three processes next to each other: Vite
+rebuilding the widget bundle (`vite build --watch`), the server (`tsx watch`,
+which restarts it when its code or the bundle changes) and the official
+[MCP Inspector](https://modelcontextprotocol.io/docs/tools/inspector) on
+`127.0.0.1`, already pointed at the server. The inspector opens no browser:
+open the URL it prints, with its per-launch token. Their output interleaves;
+the Vite build lines are expected.
 
 ### 2. As a container
 
@@ -90,16 +81,14 @@ docker run --rm --env-file .env -p 127.0.0.1:8400:8400 \
   my-mcp-server
 ```
 
-The Pulse playground's engine and Prometheus instead (`pnpm stack:up` there),
-with analytics on, which the copied `.env` leaves off:
+The Pulse playground's engine instead (`pnpm stack:up` there), seeded with
+demo data:
 
 ```bash
 docker run --rm --env-file .env -p 127.0.0.1:8400:8400 \
   --network pulse_default \
   -e ENGINE_BASE_URL=http://cibseven:8410/engine-rest -e ENGINE_ID=prod-a \
   -e ENGINE_COCKPIT_URL=http://localhost:8410/webapp \
-  -e PROMETHEUS_URL=http://prometheus:9090 \
-  -e MCP_ACTIVE_MODULES=engine,analytics,notes \
   my-mcp-server
 ```
 
@@ -119,12 +108,11 @@ your own that the container reaches by its address, drop `--network` and set
 `ENGINE_BASE_URL` to that address.
 
 Either way the MCP endpoint is `http://localhost:8400/mcp`. With `pnpm dev`,
-open the inspector at `http://localhost:8400/mcp/inspector` and call
-`notes_show_notes`: the example widget renders with no external systems (the
-production entrypoint the image runs mounts no inspector).
-The engine tools need a running engine (`docker compose up -d`, above), the
-analytics tools the Pulse playground's Prometheus and `analytics` in
-`MCP_ACTIVE_MODULES`.
+open the inspector's URL and render `notes_show_notes` in its Apps tab: the
+example widget renders with no external systems. The image runs no inspector;
+for a container, start one yourself
+(`npx @modelcontextprotocol/inspector --server-url http://127.0.0.1:8400/mcp --transport http`).
+The engine tools need a running engine (`docker compose up -d`, above).
 
 ## Develop
 
@@ -133,20 +121,21 @@ pnpm build && pnpm typecheck && pnpm test   # the bar for every change
 pnpm format:check                           # Prettier, the style in .prettierrc.json (pnpm format applies it)
 ```
 
-- The root `pnpm dev` builds the modules and the widget bundle once, when it
-  starts: after editing a module or a widget, stop it and start it again. The
-  `[mcp-use] reloaded server entry` line a save prints does not pick them up.
+- The root `pnpm dev` builds the modules once, when it starts. A widget edit
+  rebuilds the bundle and restarts the server by itself; after editing a
+  module's tools, stop `pnpm dev` and start it again. Reopen a view in the
+  inspector to see the new bundle.
 - `pnpm typecheck` is the only check that type-checks widget `.tsx` code.
-- If port 8400 is taken, `pnpm dev` takes the next free one and logs it
-  (`[mcp-use] port 8400 is taken, using 8401`): connect to the endpoint it
-  logs. An assistant still pointed at 8400 talks to whatever holds that port,
-  the stock Pulse image, say, and shows its engine tools without yours.
+- If port 8400 is taken, the server does not start and says so
+  (`listen EADDRINUSE`): stop what holds it (the stock Pulse image, say) or
+  set `PORT` in `.env`. An assistant pointed at 8400 talks to whatever holds
+  that port and shows its tools without yours.
 
 ## Connect an assistant
 
 The server speaks streamable HTTP on `/mcp`. Tools work in every MCP host;
 widgets render in hosts that support MCP Apps (the inspector is the local
-render check).
+render check; it has no chat, so a hand-off to the chat does nothing there).
 
 **Claude Desktop:** its `claude_desktop_config.json` validates **stdio servers
 only**, so a bare `"url"` entry is silently dropped. Bridge the HTTP endpoint
@@ -178,8 +167,9 @@ claude mcp add --transport http my-mcp-server http://localhost:8400/mcp
 **claude.ai (custom connector):** needs a deployed server reachable over the
 public internet (Settings → Connectors → Add custom connector with your
 `https://…/mcp` URL); localhost is not reachable from Anthropic's
-infrastructure. To try a local build against a hosted assistant, tunnel it as
-the `setup-server` skill shows.
+infrastructure. To try a local build against a hosted assistant, tunnel it
+(`cloudflared tunnel --url http://localhost:8400`) and set `MCP_URL` to the
+`https://` origin the tunnel prints, as the `setup-server` skill shows.
 
 ## Built for AI-assisted development
 
@@ -255,7 +245,7 @@ reaches the host through the view runtime `@miragon/pulse-widget-shell/widgets`
 [`.env.example`](.env.example) documents every variable this server reads;
 copy it to `.env` (loaded by `pnpm dev` only; `pnpm start` and Docker take
 their config from the environment). A variable under a watched prefix (`MCP_`,
-`ENGINE_`, `ENGINES_`, `PROMETHEUS_`, plus each module's own) that the server does not
+`ENGINE_`, `ENGINES_`, plus each module's own) that the server does not
 read prints a warning at boot, so typos surface immediately.
 
 Toolsets fail closed: without OAuth and without a `module:toolset` suffix the
@@ -266,16 +256,17 @@ implied, and `engine_create_deployment` additionally needs
 `ENGINE_ALLOW_DEPLOYMENTS=true` (deploying a BPMN runs code in the engine
 JVM). See the `setup-server` skill before widening a server others can reach.
 
-A module without toolsets, like notes or analytics, registers all its tools
+A module without toolsets, like notes, registers all its tools
 whenever it runs. Give your module toolsets as soon as it registers a tool without
 `readOnlyHint: true` and the server may run without OAuth (the
 `create-module` skill, Step 5). Until then a boot without OAuth
 warns once per such tool, naming it and its module: anyone who reaches the
 port can call it.
 
-OAuth comes from one provider's `MCP_USE_OAUTH_*` variables, mcp-use's own
-(the providers and what fails the boot: `.env.example`), and is also the only
-caller identity: passthrough engine auth and the per-caller caches key on it.
+OAuth comes from one provider's `MCP_OAUTH_*` variables (the providers and
+what fails the boot: `.env.example`): the server verifies bearer tokens as an
+OAuth resource server and never issues them. It is also the only caller
+identity: passthrough engine auth and the per-caller caches key on it.
 
 | Variable                                    | Effect                                                                                                                                                                                           |
 | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -284,9 +275,9 @@ caller identity: passthrough engine auth and the per-caller caches key on it.
 | `MCP_ALLOWED_HOSTS` / `MCP_ALLOWED_ORIGINS` | Further hostnames / origins the server accepts (default: localhost-class and `MCP_URL`'s only)                                                                                                   |
 | `MCP_MAX_BODY_BYTES`                        | Request-body cap (default 4 MiB; larger bodies get 413 before they are read)                                                                                                                     |
 | `MCP_METRICS_TOKEN`                         | Bearer token `/metrics` requires (default: open)                                                                                                                                                 |
-| `MCP_USE_OAUTH_*`                           | One OAuth provider's variables (see `.env.example`), needs `MCP_URL`, the only caller identity                                                                                                   |
+| `MCP_OAUTH_*`                               | One OAuth provider's variables (see `.env.example`), needs `MCP_URL`, the only caller identity                                                                                                   |
 | `MCP_ACTIVE_MODULES`                        | Modules (default: all; the copied `.env`: `engine,notes`; one it does not name stays off), e.g. `engine:operations,notes`; no suffix: read-only floor, OAuth → standard; no toolsets: every tool |
-| `ENGINE_*`, `PROMETHEUS_URL`, `NOTES_TITLE` | Module config, see `.env.example` for the full list                                                                                                                                              |
+| `ENGINE_*`, `NOTES_TITLE`                   | Module config, see `.env.example` for the full list                                                                                                                                              |
 
 ## Deploying
 
@@ -300,7 +291,7 @@ docker run --rm -p 8400:8400 \
 ```
 
 - No `.env` reaches this image, so `MCP_ACTIVE_MODULES` is unset and every
-  module runs, analytics included: name the modules you want.
+  module runs, the notes example included: name the modules you want.
 - `MCP_URL` is the public base URL when the server sits behind a proxy or MCP
   gateway; `PORT` changes the HTTP port. The server answers 403 to any `Host`
   (or browser `Origin`) that is not localhost-class, `MCP_URL`'s or listed in
@@ -308,7 +299,7 @@ docker run --rm -p 8400:8400 \
   deployment reached under any other name must set them.
 - Without OAuth the server boots unauthenticated: a module with toolsets runs
   its read-only floor, a module without toolsets every tool it has. Set one
-  provider's `MCP_USE_OAUTH_*` variables (plus `MCP_URL`) to require sign-in
+  provider's `MCP_OAUTH_*` variables (plus `MCP_URL`) to require sign-in
   and raise the default toolsets. An authenticating gateway
   in front is invisible to the server: it still sees no identity, so any
   widened toolset is open to whoever passes the gateway.
@@ -328,7 +319,7 @@ docker run --rm -p 8400:8400 \
   removed before new connections are refused.
 - The views render in Geist and Geist Mono, served by the server itself
   under `/fonts/geist-<version>/` (woff2, cached immutable, no CDN) and
-  admitted by every view's CSP (`resourceDomains`: `MCP_URL`'s origin, else
+  admitted by every bundle view's CSP (`resourceDomains`: `MCP_URL`'s origin, else
   the origin the host read the view from). The host's browser fetches them
   from that origin, so behind a gateway route `/fonts/` to the server too. A
   host that blocks the origin, or a browser that cannot reach it, shows the

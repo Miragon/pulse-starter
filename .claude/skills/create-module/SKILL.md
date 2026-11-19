@@ -11,14 +11,14 @@ conforming **structurally** to the server's port (the `ModuleDefinition` type
 in `server/src/setup.ts`). Your module never imports the server, and the
 server never reaches into your module. Modules are peers: they never import
 each other; anything shared goes through `@miragon/pulse-ui` (the design kit),
-`@miragon/pulse-widget-shell` or the app-wired `SharedResources`.
+`@miragon/pulse-widget-shell` or the server-wired `SharedResources` (today empty).
 
 **Reference implementation: `modules/mcp-notes`.** Copy it rather than
 inventing a new shape; every step below points at the file that shows the
 pattern. For patterns the notes module doesn't cover (toolsets, paged
-lists), the published Miragon modules ship their sources under
-`server/node_modules/@miragon/pulse-{engine,analytics}-connector/src/`
-(gitignored symlinks: search one package directory, not the repo root; see
+lists), the published engine module ships its sources under
+`server/node_modules/@miragon/pulse-engine-connector/src/`
+(a gitignored symlink: search that package directory, not the repo root; see
 `CLAUDE.md` → Reference code).
 
 **A module is for your other systems, not for the engine.** The engine
@@ -27,9 +27,9 @@ module already registers the generic engine operations as tools
 `engine_set_job_retries` and more), so "start our leasing process" needs no
 new tool. A listing shows only the running toolset: these writes appear with
 OAuth or under `MCP_ACTIVE_MODULES=engine:operations,<yours>`, never
-in the default read-only boot. List them in the inspector or with
-`pnpm exec mcp-use client local tools list` in `server/`, after the one-time
-`connect` (`CLAUDE.md` → Verification). To give the model your processes'
+in the default read-only boot. List them in the MCP Inspector `pnpm dev`
+starts, or headless from `server/` with its CLI
+(`pnpm exec mcp-inspector --cli --server-url http://127.0.0.1:8400/mcp --transport http --method tools/list`). To give the model your processes'
 keys and variables, put them into your module's `instructions` (Step 3)
 without naming `engine_*` tools: the engine module may be off.
 
@@ -51,12 +51,15 @@ needed. Then adjust:
   `typecheck` script, the only check that covers widget code); and
   `src/widgets/tsconfig.json` extends it, so editors, which read only files named
   `tsconfig.json`, check the widgets with the same settings.
+- A module without widgets (its views are finished HTML documents, the `add-widget`
+  skill) deletes `src/widgets` and drops the `./widgets` entry, `tsconfig.widgets.json`
+  and the second half of `typecheck`, which would fail on no inputs (`TS18003`).
 - Do a global rename `notes` → `<name>` across `src/` (module name, plugin
   name, tool prefixes and thus view names, query keys), `src/module.test.ts`
   and the widget test included.
 
 The copy carries its own pins of `@miragon/pulse-ui`,
-`@miragon/pulse-widget-shell`, `mcp-use` and the shared libraries, and they
+`@miragon/pulse-widget-shell` and the shared libraries, and they
 move with the server's: an upgrade bumps them in every module too.
 `server/test/pins.test.ts` names each pin that differs from the installed
 `@miragon/pulse-widget-shell`.
@@ -82,13 +85,15 @@ The contract, field by field (see `notesModule`):
 - `name`: the key used in `MCP_ACTIVE_MODULES` and the name of its plugin.
 - `configFromEnv(env)`: a **pure** env → raw-config mapping; no I/O, no
   `process.env` reads outside the argument. It may check the config and
-  throw one plain `Error` that names the variable, as the engine and
-  analytics modules do: a wrong setting then fails the boot before its
+  throw one plain `Error` that names the variable, as the engine module
+  does: a wrong setting then fails the boot before its
   `Toolsets:` line.
 - `knownEnvVars`: every env var your module reads. This feeds the server's
   boot-time typo warner, and each var contributes its prefix (`ACME_URL` →
   `ACME_`) to the watched set, so your module gets the same typo coverage as
-  the built-in ones.
+  the built-in ones. A variable whose name your own settings carry (the engine
+  module's profiles name `ENGINE_SECRET_*` variables) goes into the optional
+  `referencedEnvVars(env)` instead, which never throws.
 - `toolsets`: required as soon as your module registers a tool without
   `readOnlyHint: true` and the server may run without OAuth (Step 5). A
   module of reads only, like notes, leaves it out; a `<name>:<toolset>`
@@ -96,14 +101,24 @@ The contract, field by field (see `notesModule`):
 - `createPlugin(config, shared)`: validate `config` with your zod schema
   (also after a check in `configFromEnv`) and return a `ModulePlugin` (the type
   from `@miragon/pulse-widget-shell/server`), `{ name, register(server) }`.
+  `server` is a `ModuleServer`: the official MCP SDK's own
+  `registerTool`/`registerPrompt`/`registerResource`, with the signatures its docs
+  (https://ts.sdk.modelcontextprotocol.io/v2/) show. The boot serves your views
+  from the bundle, so a module needs no resource for a widget; a finished HTML
+  view is the exception (the `add-widget` skill, "A finished HTML view").
   Construct your data source/client once in `createPlugin`; `register` hands
   it to `registerTools`, then to `registerWidgetTools`. `name` is the module's
-  name: the boot refuses a tool name two plugins register and names both
-  owners. `shared` is the app-wired cross-module resource bag; type the fields
-  you consume structurally (e.g. `fetchBpmnXml?: FetchBpmnXml`, as analytics
-  does) and tolerate their absence.
+  name: the boot refuses a tool, prompt or resource name or a resource URI two
+  plugins register and names both owners, and an input schema that would let an
+  unknown key through. The toolset filter never sees a resource, so every client
+  that reaches the server can read it: register one that only a wider toolset
+  may read inside that toolset's branch. `shared` is the port for what the
+  modules of this server share, built by `sharedResources` in
+  `server/src/setup.ts`, which hands nothing through today: a field you add
+  to `SharedResources` there, your module types structurally on its side and
+  tolerates its absence.
 - Optional `bootWarnings(env)`: return actionable hints for misconfigured
-  deployments (see the analytics module's Prometheus-URL warning).
+  deployments (see the engine module's warning when no engine is configured).
 - Optional `instructions(config)`: a short snippet the
   server appends to its MCP `instructions` (the rules that hold for EVERY tool
   of your module: routing, argument conventions, which tool answers what), so
@@ -115,7 +130,10 @@ a root wires (`notesModule`); `createPlugin`, the config and the data types stay
 inside the package, as in the Miragon connectors.
 
 `src/module.test.ts` checks the port the way the boot uses it: the plugin's
-name and the tools its `register` adds. Keep it in step with your tools.
+name and the tools its `register` adds, recorded by `recordingModuleServer()`
+from `@miragon/pulse-widget-shell/testing`, which also calls a handler and reads
+a resource (`recording.resource(uri).read()`) the way the SDK does. Keep it in
+step with your tools.
 
 ## Step 4: tools
 
@@ -123,7 +141,7 @@ name and the tools its `register` adds. Keep it in step with your tools.
 `createToolRegistrar(server, store)` (from
 `@miragon/pulse-widget-shell/server`). The second argument is threaded into
 every handler as its first parameter; the registrar refuses unknown keys.
-Raw `server.tool()` is reserved for the widget path (`widget-tools.ts`).
+A raw `server.registerTool()` is reserved for the widget path (`widget-tools.ts`).
 
 Tool conventions (they carry the contract, so they are not cosmetic):
 
@@ -169,7 +187,7 @@ export const myToolsets = createToolsetVocabulary("<name>", MY_TOOLSETS, "read-o
   (with a warning), and a direct `createPlugin` caller passing no toolset all
   land there.
 - `authenticatedDefault` is the no-suffix default under OAuth, which the boot
-  installs from `MCP_USE_OAUTH_*`, so every OAuth boot
+  installs from `MCP_OAUTH_*`, so every OAuth boot
   that names no suffix runs it: your standard non-admin toolset. Never make it
   your widest one: an admin-like toolset must only be reachable by naming it.
 - Write ONE rule function for the module, `isToolInToolset(config, toolset)`
@@ -195,18 +213,17 @@ Four edits, plus the env documentation:
    the list. A module the list does not name stays off and its tools are absent
    (the boot log's `Toolsets:` line shows what runs).
    `server/test/env-example.test.ts` holds `.env.example` to `MODULES`; nothing
-   checks your `.env`, so a stale copy boots without your module. The playground
-   recipe in the README's Quickstart and in the `setup-server` skill's Step 5
-   names the modules itself in `-e MCP_ACTIVE_MODULES`: add `<name>` there too.
+   checks your `.env`, so a stale copy boots without your module.
 
 A missed spread is **silent** (tools work, the view says it can't show
 itself), which is why `server/test/view-registry.test.ts` covers you
 without an edit: it boots the real composition (edit 2) and fails naming a
-view-bound tool without a view.
+view-bound tool without a view. A module whose views are finished HTML documents
+has nothing to spread: it skips edit 3 and the Tailwind line below.
 
 Tailwind needs no edit: `server/src/ui/globals.css` scans every workspace
 module through the `modules/*/src` glob. Only an npm-installed module
-package would need its own `@source` line there.
+package with widget sources would need its own `@source` line there.
 
 Then document every var from `knownEnvVars` in `.env.example`.
 `server/test/env-example.test.ts` fails on both drift directions (an
@@ -226,9 +243,9 @@ pnpm build && pnpm typecheck && pnpm test
 
 Then boot it for real: `pnpm dev`, check the boot log (your module's env-var
 typo coverage and boot warnings show up here, and a warning names each write
-a module without toolsets leaves open), and call your tools in the
-inspector at `http://localhost:8400/mcp/inspector`, or headless via the
-mcp-use client/screenshot commands in `CLAUDE.md` → Verification. Also verify
+a module without toolsets leaves open), and call your tools in the MCP
+Inspector `pnpm dev` starts (open the URL it prints), or headless with its CLI
+(`CLAUDE.md` → Verification). Also verify
 the selection path: `MCP_ACTIVE_MODULES=<name> pnpm dev` must expose exactly
 your module's tools (the shell's value beats `.env`). If you declared `toolsets`, that is its read-only floor
 without OAuth and its `authenticatedDefault` with it (the boot log's
@@ -257,8 +274,7 @@ own module stands, take the example out in one change:
    take a show tool of yours, and the README's Configuration names your
    module where it names notes (the toolset prose and the variable table).
 8. Every module list that still names `notes` names your module: the README's
-   Quickstart (`MCP_ACTIVE_MODULES=engine,notes`, and
-   `-e MCP_ACTIVE_MODULES=engine,analytics,notes` in the playground recipe),
+   Quickstart (`MCP_ACTIVE_MODULES=engine,notes`),
    `CLAUDE.md` (`engine:operations,notes` and the comment on
    `cp .env.example .env`) and the `setup-server` skill (Steps 1, 2, 3 and 5,
    Troubleshooting). Copied as it stands, such a value fails the boot.
@@ -266,10 +282,7 @@ own module stands, take the example out in one change:
    `server/src/setup.ts` that names the deleted test.
 
 Then run Step 7's bar. The other guard tests follow `MODULES`, so they need no
-edit. The same holds for a Pulse module you leave out: dropping analytics is
-`analyticsModule` in `MODULES`, `analyticsViews` and `analyticsHostWidgets` in
-`view-registry.ts`, its block in `.env.example` and its name in any
-`MCP_ACTIVE_MODULES` value that holds it.
+edit.
 
 ## Anti-patterns
 
@@ -278,8 +291,8 @@ edit. The same holds for a Pulse module you leave out: dropping analytics is
 - Reading `process.env` anywhere in the module but `configFromEnv`'s
   argument, or letting a check there throw a ZodError: the boot prints its
   schema path (`engines[0].id`), not the variable to fix.
-- Registering plain tools with raw `server.tool()`: the registrar is the
-  contract; the raw path is for widget tools only.
+- Registering plain tools with a raw `server.registerTool()`: the registrar is
+  the contract; the raw path is for widget tools only.
 - Naming a plain tool `*_data` or `*_show_*`: the e2e naming contract will
   fail it, correctly.
 - Talking to your backend from widget code: widgets read through `*_data`

@@ -2,7 +2,7 @@
   "name": "@acme/composed-mcp-server",
   "version": "0.1.0",
   "private": true,
-  "description": "Composed MCP server: Pulse modules (engine, analytics) plus the custom notes module.",
+  "description": "Composed MCP server: the Pulse engine module plus the custom notes module.",
   "type": "module",
   "files": [
     "dist"
@@ -12,36 +12,38 @@
     "build:ui": "vite build",
     "build:server": "tsc",
     "build": "pnpm run build:ui && pnpm run build:server",
-    "dev": "pnpm run build:ui && mcp-use dev --port ${PORT:-8400} --no-open",
+    "dev": "pnpm run build:ui && pnpm run \"/^dev:/\"",
     "typecheck": "tsc --noEmit && tsc -p tsconfig.ui.json && tsc -p tsconfig.test.json",
     "test": "vitest run",
-    "start": "cross-env NODE_ENV=production node dist/index.js"
+    "start": "cross-env NODE_ENV=production node dist/index.js",
+    "dev:view": "vite build --watch",
+    "dev:server": "HOST=${HOST:-127.0.0.1} PORT=${PORT:-8400} tsx watch --include \"dist/mcp-app.*\" src/index.ts",
+    "dev:inspector": "HOST=127.0.0.1 MCP_AUTO_OPEN_ENABLED=false MCP_INSPECTOR_SECRET_STORE=${MCP_INSPECTOR_SECRET_STORE:-memory} mcp-inspector --web --transport http --server-url http://localhost:${PORT:-8400}/mcp"
   },
   "dependencies": {
     "@acme/mcp-notes": "workspace:*",
-    "@miragon/pulse-analytics-connector": "0.27.1",
-    "@miragon/pulse-engine-connector": "0.27.1",
-    "@miragon/pulse-widget-shell": "0.27.1",
-    "mcp-use": "2.12.2",
+    "@miragon/pulse-engine-connector": "0.28.0",
+    "@miragon/pulse-widget-shell": "0.28.0",
     "zod": "4.6.7"
   },
   "devDependencies": {
-    "@mcp-use/client": "2.4.5",
-    "@miragon/pulse-ui": "0.27.1",
+    "@miragon/pulse-ui": "0.28.0",
     "@modelcontextprotocol/client": "2.4.0",
-    "@tailwindcss/vite": "4.3.4",
-    "@tanstack/react-query": "5.105.3",
+    "@modelcontextprotocol/inspector": "2.15.0",
+    "@tailwindcss/vite": "4.3.5",
+    "@tanstack/react-query": "5.107.1",
     "@types/node": "22.20.5",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
-    "@vitejs/plugin-react": "6.2.1",
+    "@vitejs/plugin-react": "6.3.0",
     "cross-env": "10.1.0",
-    "lucide-react": "1.67.0",
+    "lucide-react": "1.70.0",
     "react": "19.3.1",
     "react-dom": "19.3.1",
-    "tailwindcss": "4.3.4",
+    "tailwindcss": "4.3.5",
+    "tsx": "4.23.15",
     "typescript": "5.9.3",
-    "vite": "8.3.6",
+    "vite": "8.3.8",
     "vitest": "5.1.0"
   }
 }
