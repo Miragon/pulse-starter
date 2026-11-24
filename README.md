@@ -1,6 +1,6 @@
 > [!NOTE]
-> Read-only mirror of [`templates/composed-server`](https://github.com/Miragon/pulse/tree/v0.31.0/templates/composed-server)
-> in [Miragon/pulse](https://github.com/Miragon/pulse) at v0.31.0. Open issues and pull requests there.
+> Read-only mirror of [`templates/composed-server`](https://github.com/Miragon/pulse/tree/v0.32.0/templates/composed-server)
+> in [Miragon/pulse](https://github.com/Miragon/pulse) at v0.32.0. Open issues and pull requests there.
 >
 > Created your repository from this template? It does not update itself.
 > Each [release of this mirror](https://github.com/Miragon/pulse-starter/releases)
