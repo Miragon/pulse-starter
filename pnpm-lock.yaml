@@ -21,11 +21,11 @@ importers:
   modules/mcp-notes:
     devDependencies:
       '@miragon/pulse-ui':
-        specifier: 0.32.0
-        version: 0.32.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(bpmn-js@18.33.1)(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(typescript@5.9.3)
+        specifier: 0.33.0
+        version: 0.33.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(bpmn-js@18.33.1)(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(typescript@5.9.3)
       '@miragon/pulse-widget-shell':
-        specifier: 0.32.0
-        version: 0.32.0(@miragon/pulse-ui@0.32.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(bpmn-js@18.33.1)(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(typescript@5.9.3))(@modelcontextprotocol/client@2.4.0)(@modelcontextprotocol/core@2.4.0)(@tanstack/react-query@5.107.2(@types/react@19.3.0)(react@19.3.1))(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(zod@4.6.7)
+        specifier: 0.33.0
+        version: 0.33.0(@miragon/pulse-ui@0.33.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(bpmn-js@18.33.1)(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(typescript@5.9.3))(@modelcontextprotocol/client@2.4.0)(@modelcontextprotocol/core@2.4.0)(@tanstack/react-query@5.107.2(@types/react@19.3.0)(react@19.3.1))(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(zod@4.6.7)
       '@tanstack/react-query':
         specifier: 5.107.2
         version: 5.107.2(@types/react@19.3.0)(react@19.3.1)
@@ -66,21 +66,21 @@ importers:
         specifier: workspace:*
         version: link:../modules/mcp-notes
       '@miragon/pulse-engine-connector':
-        specifier: 0.32.0
-        version: 0.32.0(6834d6bbe938739849b2e3d5e1803a5e)
+        specifier: 0.33.0
+        version: 0.33.0(193f1e07912ea5bf5e406c6aaa856105)
       '@miragon/pulse-widget-shell':
-        specifier: 0.32.0
-        version: 0.32.0(@miragon/pulse-ui@0.32.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(bpmn-js@18.33.1)(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(typescript@5.9.3))(@modelcontextprotocol/client@2.4.0)(@modelcontextprotocol/core@2.4.0)(@tanstack/react-query@5.107.2(@types/react@19.3.0)(react@19.3.1))(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(zod@4.6.7)
+        specifier: 0.33.0
+        version: 0.33.0(@miragon/pulse-ui@0.33.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(bpmn-js@18.33.1)(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(typescript@5.9.3))(@modelcontextprotocol/client@2.4.0)(@modelcontextprotocol/core@2.4.0)(@tanstack/react-query@5.107.2(@types/react@19.3.0)(react@19.3.1))(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(zod@4.6.7)
       zod:
         specifier: 4.6.7
         version: 4.6.7
     devDependencies:
       '@miragon/pulse-blocks':
-        specifier: 0.32.0
-        version: 0.32.0(@miragon/pulse-engine-core@0.32.0)(@miragon/pulse-ui@0.32.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(bpmn-js@18.33.1)(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(typescript@5.9.3))(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+        specifier: 0.33.0
+        version: 0.33.0(@miragon/pulse-engine-core@0.33.0)(@miragon/pulse-ui@0.33.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(bpmn-js@18.33.1)(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(typescript@5.9.3))(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       '@miragon/pulse-ui':
-        specifier: 0.32.0
-        version: 0.32.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(bpmn-js@18.33.1)(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(typescript@5.9.3)
+        specifier: 0.33.0
+        version: 0.33.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(bpmn-js@18.33.1)(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(typescript@5.9.3)
       '@modelcontextprotocol/client':
         specifier: 2.4.0
         version: 2.4.0
@@ -365,43 +365,43 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@miragon/pulse-blocks@0.32.0':
-    resolution: {integrity: sha512-aS3CRtexpKgfea3IMgHx+1C2p8svGmfYOT5mELLFumMqaDPGFCBU+jFsetpiXcBskrFp++FSVqtCpEyKxYZKsg==}
+  '@miragon/pulse-blocks@0.33.0':
+    resolution: {integrity: sha512-wOqEUahiTYRGhzqgBsQpGRJrnXOucNj24AwqGNW/Rw7XY6YD/yHcuSep9VEYdJdycM9ylJGWuaJ+0KwjBUZ5hQ==}
     engines: {node: '>=22.22.2'}
     peerDependencies:
-      '@miragon/pulse-ui': ^0.32.0
+      '@miragon/pulse-ui': ^0.33.0
       lucide-react: ^0.562.0 || ^1.0.0
       react: ^19.2.0
       react-dom: ^19.2.0
 
-  '@miragon/pulse-board@0.32.0':
-    resolution: {integrity: sha512-ReHgfXfKPLVPnbq1f8mp/K7j+SFP35hfchgSlqrB0bmxOotGl0Atoo2ht5wNOmyO1iFdrjgNhs/4vzz3kUpanA==}
+  '@miragon/pulse-board@0.33.0':
+    resolution: {integrity: sha512-etqLeaMMTkurxNfmoLw/lEQQTiE8iomCqhHrhL/+dpmg5/2Xdjw3/+Fj2l55GBYDSq21DeFap/s79gUgFNo75w==}
     engines: {node: '>=22.22.2'}
     peerDependencies:
-      '@miragon/pulse-engine-core': ^0.32.0
+      '@miragon/pulse-engine-core': ^0.33.0
     peerDependenciesMeta:
       '@miragon/pulse-engine-core':
         optional: true
 
-  '@miragon/pulse-c7-client@0.32.0':
-    resolution: {integrity: sha512-AeNYKz4YmHv8Muwu3w45KYBIz2Tc2V8R6WuhKwtULYvvleE9h+n6jYdRgiFBrXpHuKn/EZCZG1lGGfPtfgUspw==}
+  '@miragon/pulse-c7-client@0.33.0':
+    resolution: {integrity: sha512-mFnhqi7ZBrdbR1D2GKNEU96C9P612EPQ64r9XNEOpowmlaWmZDOxr8xIyIiLUOlGsnG82c+ZhuAlMZgTdLeHHQ==}
     engines: {node: '>=22'}
 
-  '@miragon/pulse-c7-core@0.32.0':
-    resolution: {integrity: sha512-KeYYm0S7lnItZcju92LXse42PWu1oknaTR4E6987lRcPR/OmzbAgf3Os+upLM05XDdhlnNS6ytJ3RoZGJtRb2w==}
+  '@miragon/pulse-c7-core@0.33.0':
+    resolution: {integrity: sha512-+ijITgrmItjpMwUIPiyHI7sBsbzaIGIn+PVFJLkvJo/npcwv80eA4v1BLCzn8ws5deLSt/kdL8w4FyFZNTi6bA==}
     engines: {node: '>=22.22.2'}
 
-  '@miragon/pulse-c8-core@0.32.0':
-    resolution: {integrity: sha512-j/Ngr7W8Hfp02Hl1QQu5srqS0qaCxPPxqqxNDJ/EZp/qbm4PLEkKsyDMSmlL3cSpBAfd9O2USRXn9H9vjYAXYw==}
+  '@miragon/pulse-c8-core@0.33.0':
+    resolution: {integrity: sha512-ygcseAvvfPOcsAQ6vXWGaHXo5lW8OzWp/bu8AO6RcbuBHV4IHcRjyiJS1ccdBusZDA7la3s2Nfim5VdynvVs0w==}
     engines: {node: '>=22.22.2'}
 
-  '@miragon/pulse-engine-connector@0.32.0':
-    resolution: {integrity: sha512-jF3EiuuFwwGI44e9VrAI6Hg26blglQXo5TUl7Bs1qFTeY6CdGrl65/UI4kcJv/uv8iD7PvCPo7t0DlGagPtYxw==}
+  '@miragon/pulse-engine-connector@0.33.0':
+    resolution: {integrity: sha512-AgyQsBKESKQVY8S+8sUGa5qTB9C/yOtx9dAO6Eg3/MVtxYZQ2nVl8FXsl7x0d0/f5J5J6QpVuVEEJ4tcaei96w==}
     engines: {node: '>=22.22.2'}
     peerDependencies:
-      '@miragon/pulse-blocks': ^0.32.0
-      '@miragon/pulse-ui': ^0.32.0
-      '@miragon/pulse-widget-shell': ^0.32.0
+      '@miragon/pulse-blocks': ^0.33.0
+      '@miragon/pulse-ui': ^0.33.0
+      '@miragon/pulse-widget-shell': ^0.33.0
       bpmn-js: ^18.31.1
       lucide-react: ^0.562.0 || ^1.0.0
       react: ^19.2.0
@@ -419,32 +419,32 @@ packages:
       react-dom:
         optional: true
 
-  '@miragon/pulse-engine-core@0.32.0':
-    resolution: {integrity: sha512-BY/VqA7KPs/2YN745v3Ka61+oMtIRiRXbuOuKhqPLWdVjG8lO+h4AKXB0yq236l6POqcmkHYHm6hzUT4YPHWoA==}
+  '@miragon/pulse-engine-core@0.33.0':
+    resolution: {integrity: sha512-XQAPsLcZaiU/+wpp2/YDstnUvhN0obND6TkfkH1X3QApYl3c9zJkEd35x1kXAKyvkHmgNR3lNqbi/voHx8jbyQ==}
     engines: {node: '>=22.22.2'}
 
-  '@miragon/pulse-http@0.32.0':
-    resolution: {integrity: sha512-B6o6rP1N78jHxarij+RmIk0py5pnGYRw/mxgQvGL19t6X9F36eQt/jrESu/5XjcTeIfasZw9XbOGdwQiTtpNEA==}
+  '@miragon/pulse-http@0.33.0':
+    resolution: {integrity: sha512-5ofrzA+IaHqxR9woRUOlSaWEzBTPuXcCBEVeFUNchUaDvNMPta2XY8gdkJrHAanYODTT08rP0vgD5eD+3+rwLg==}
     engines: {node: '>=22.22.2'}
 
-  '@miragon/pulse-profile@0.32.0':
-    resolution: {integrity: sha512-yFMToQf+ZnFzGcurPRaaS6hV1LeUHLnGU+M2ADY8KZebsTot+Lf03xiLHJbN6B+DFhRL94m2m3fscWRBKgn26A==}
+  '@miragon/pulse-profile@0.33.0':
+    resolution: {integrity: sha512-IgRk4+dEU45B+/E88f+LbEfWJWratdVeJolnIsLA7S3Jpj9Nm0J94nKtNe1Stdt9p+8k30YNn2KtXNyWmtVfuQ==}
     engines: {node: '>=22.22.2'}
 
-  '@miragon/pulse-screens@0.32.0':
-    resolution: {integrity: sha512-AXt5I94BiQU6B6kIJHy2QQ61Wgz+dXVEr5UIS932PxyvOQJdj57Mf8zs7X6lGESY+eav3BhO8ESxQJYWEvHCuQ==}
+  '@miragon/pulse-screens@0.33.0':
+    resolution: {integrity: sha512-+vJMpaH/+unq7M4sBC/WE2RrUx1rMHeyLLe1sDP3I58nfyy33B+JPmZiQm5WjmmiPe/jc9XDvg70xPdj2iw0rA==}
     engines: {node: '>=22.22.2'}
     peerDependencies:
-      '@miragon/pulse-board': ^0.32.0
-      '@miragon/pulse-engine-core': ^0.32.0
+      '@miragon/pulse-board': ^0.33.0
+      '@miragon/pulse-engine-core': ^0.33.0
     peerDependenciesMeta:
       '@miragon/pulse-board':
         optional: true
       '@miragon/pulse-engine-core':
         optional: true
 
-  '@miragon/pulse-ui@0.32.0':
-    resolution: {integrity: sha512-eVBGt186ReBnJlOWm0blbhoGlyXGgmZGtwoELINzVqLIpuJLpiSXSoFQ9AUeyG4Hp7fvSVTmGxzA5LZU1wYfAQ==}
+  '@miragon/pulse-ui@0.33.0':
+    resolution: {integrity: sha512-AdwSB5eZ9U7wVLVWocQAKTMcUkKLuBGHeGVSA+YC0G+EdM2C/j58ro0yuR3VWUc5N/kssZgk2W+HBrl1fjQXVA==}
     engines: {node: '>=22.22.2'}
     peerDependencies:
       bpmn-js: ^18.31.1
@@ -461,11 +461,11 @@ packages:
       typescript:
         optional: true
 
-  '@miragon/pulse-widget-shell@0.32.0':
-    resolution: {integrity: sha512-2Qf8Hy7Qki9uvXtQdT8rnFrGxQTiq6kNsXwN53pbM6Gfp8pZa6bEZm+njIxjkIaSxK7smKR9WgLh5T9Ej6HBAQ==}
+  '@miragon/pulse-widget-shell@0.33.0':
+    resolution: {integrity: sha512-wka8MLielsdhlQWxNjJ8BsQFaD1Wp8JurdaDhGDvEJw/LWGI/DGeeYNaoG5iWWszto9tVx5uEcosnO/+hU4I0w==}
     engines: {node: '>=22.22.2'}
     peerDependencies:
-      '@miragon/pulse-ui': ^0.32.0
+      '@miragon/pulse-ui': ^0.33.0
       '@tanstack/react-query': ^5.103.2
       lucide-react: ^0.562.0 || ^1.0.0
       react: ^19.2.0
@@ -1563,8 +1563,8 @@ packages:
   '@types/deep-eql@4.0.2':
     resolution: {integrity: sha512-c9h9dVVMigMPc4bwTvC5dxqtqJZwQPePsWjPlpSOnojbor6pGqdk541lfA7AqFQr5pB1BRdq0juY9db81BwyFw==}
 
-  '@types/estree@1.0.10':
-    resolution: {integrity: sha512-lTyOMnOcmRBzdCv6/4zUZCrEhV0xrqQiUZBZtVcbmLHBXKLnN8q89v/wKRF/Q0HbwVsqbIG3o5HDoFl9sduM+g==}
+  '@types/estree@1.0.11':
+    resolution: {integrity: sha512-YBdNe5JcjYR0sPhJW1QIeRCmI11YhYvaRuGCs9+WCeTTb+Yhb2BE2XMe5/wAqF10FK5g3+q1PDhQABfT7aX0gg==}
 
   '@types/node@22.20.5':
     resolution: {integrity: sha512-U2+DNr+wSjpsTS/wZGYHq7GcwfuSmKiKvoPvK22zwTlRhU91yOniN4qRR5KhIjvif7ysw/dz/hKmfDH0Ris4aA==}
@@ -1872,8 +1872,8 @@ packages:
     resolution: {integrity: sha512-KmXvQAXwcAHV+muzbIwoJ23niEB5nMoDVr9WcRkU8mvjUECm/1+7v4Jgp7P7a+H6MLFrh+vXrGonGrGS+RQfkA==}
     engines: {node: '>=16.9.0'}
 
-  hono@4.13.21:
-    resolution: {integrity: sha512-h9UsguqfVk4kjUwLvQpHOmOaJpW10jz9lp8bvKUUa04wJG/fabKFBqXZ06D6LFaeKQZtUZRVeg0gfkTTEsX7Mw==}
+  hono@4.13.22:
+    resolution: {integrity: sha512-wncKd5/40Pj8grx0RZ2fgNIicFEmVFwIHT5UFLTnphR8I6AQWFf9c2JoM6ZJ9g8y4pMzg3sNlCVNe0m2Yclg0Q==}
     engines: {node: '>=16.9.0'}
 
   htm@3.1.1:
@@ -2399,8 +2399,8 @@ packages:
     resolution: {integrity: sha512-b/8GRMdnY4cqkfCLyaFpTGIv1qwfi3oT0mWaepwT++6Z/ZrYehNfZZ2JDKVLKGhNoEkS3IIB1ELtCT0XS5DtOA==}
     engines: {node: '>=20.0.0'}
 
-  tinyexec@1.3.1:
-    resolution: {integrity: sha512-GCvB3aoys96IuDFBMcTB46JOR6mdMtAToqwiW8JlWhsoh1mhHi/xn9ss/Dg7N555GiJyEt2qzoG/NHCwM6h1EA==}
+  tinyexec@1.4.0:
+    resolution: {integrity: sha512-PV6lIcJQh57aFeJDwx16JNHmgFRh5xguzallrDW1qe8nAghYgr5MKz2K5k7wEyV/ygZhdnIAP8+HZSarHPBCsg==}
     engines: {node: '>=18'}
 
   tinyglobby@0.2.17:
@@ -2735,9 +2735,9 @@ snapshots:
     dependencies:
       hono: 4.13.19
 
-  '@hono/node-server@2.1.11(hono@4.13.21)':
+  '@hono/node-server@2.1.11(hono@4.13.22)':
     dependencies:
-      hono: 4.13.21
+      hono: 4.13.22
 
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:
@@ -2758,63 +2758,63 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.3
       '@jridgewell/sourcemap-codec': 1.6.0
 
-  '@miragon/pulse-blocks@0.32.0(@miragon/pulse-engine-core@0.32.0)(@miragon/pulse-ui@0.32.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(bpmn-js@18.33.1)(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(typescript@5.9.3))(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)':
+  '@miragon/pulse-blocks@0.33.0(@miragon/pulse-engine-core@0.33.0)(@miragon/pulse-ui@0.33.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(bpmn-js@18.33.1)(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(typescript@5.9.3))(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)':
     dependencies:
-      '@miragon/pulse-board': 0.32.0(@miragon/pulse-engine-core@0.32.0)
-      '@miragon/pulse-screens': 0.32.0(@miragon/pulse-board@0.32.0(@miragon/pulse-engine-core@0.32.0))(@miragon/pulse-engine-core@0.32.0)
-      '@miragon/pulse-ui': 0.32.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(bpmn-js@18.33.1)(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(typescript@5.9.3)
+      '@miragon/pulse-board': 0.33.0(@miragon/pulse-engine-core@0.33.0)
+      '@miragon/pulse-screens': 0.33.0(@miragon/pulse-board@0.33.0(@miragon/pulse-engine-core@0.33.0))(@miragon/pulse-engine-core@0.33.0)
+      '@miragon/pulse-ui': 0.33.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(bpmn-js@18.33.1)(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(typescript@5.9.3)
       lucide-react: 1.73.0(@types/react@19.3.0)(react@19.3.1)
       react: 19.3.1
       react-dom: 19.3.1(react@19.3.1)
     transitivePeerDependencies:
       - '@miragon/pulse-engine-core'
 
-  '@miragon/pulse-board@0.32.0(@miragon/pulse-engine-core@0.32.0)':
+  '@miragon/pulse-board@0.33.0(@miragon/pulse-engine-core@0.33.0)':
     optionalDependencies:
-      '@miragon/pulse-engine-core': 0.32.0
+      '@miragon/pulse-engine-core': 0.33.0
 
-  '@miragon/pulse-c7-client@0.32.0': {}
+  '@miragon/pulse-c7-client@0.33.0': {}
 
-  '@miragon/pulse-c7-core@0.32.0':
+  '@miragon/pulse-c7-core@0.33.0':
     dependencies:
-      '@miragon/pulse-engine-core': 0.32.0
+      '@miragon/pulse-engine-core': 0.33.0
 
-  '@miragon/pulse-c8-core@0.32.0':
+  '@miragon/pulse-c8-core@0.33.0':
     dependencies:
-      '@miragon/pulse-engine-core': 0.32.0
+      '@miragon/pulse-engine-core': 0.33.0
 
-  '@miragon/pulse-engine-connector@0.32.0(6834d6bbe938739849b2e3d5e1803a5e)':
+  '@miragon/pulse-engine-connector@0.33.0(193f1e07912ea5bf5e406c6aaa856105)':
     dependencies:
-      '@miragon/pulse-board': 0.32.0(@miragon/pulse-engine-core@0.32.0)
-      '@miragon/pulse-c7-client': 0.32.0
-      '@miragon/pulse-c7-core': 0.32.0
-      '@miragon/pulse-c8-core': 0.32.0
-      '@miragon/pulse-engine-core': 0.32.0
-      '@miragon/pulse-http': 0.32.0
-      '@miragon/pulse-profile': 0.32.0
-      '@miragon/pulse-screens': 0.32.0(@miragon/pulse-board@0.32.0(@miragon/pulse-engine-core@0.32.0))(@miragon/pulse-engine-core@0.32.0)
-      '@miragon/pulse-widget-shell': 0.32.0(@miragon/pulse-ui@0.32.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(bpmn-js@18.33.1)(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(typescript@5.9.3))(@modelcontextprotocol/client@2.4.0)(@modelcontextprotocol/core@2.4.0)(@tanstack/react-query@5.107.2(@types/react@19.3.0)(react@19.3.1))(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(zod@4.6.7)
+      '@miragon/pulse-board': 0.33.0(@miragon/pulse-engine-core@0.33.0)
+      '@miragon/pulse-c7-client': 0.33.0
+      '@miragon/pulse-c7-core': 0.33.0
+      '@miragon/pulse-c8-core': 0.33.0
+      '@miragon/pulse-engine-core': 0.33.0
+      '@miragon/pulse-http': 0.33.0
+      '@miragon/pulse-profile': 0.33.0
+      '@miragon/pulse-screens': 0.33.0(@miragon/pulse-board@0.33.0(@miragon/pulse-engine-core@0.33.0))(@miragon/pulse-engine-core@0.33.0)
+      '@miragon/pulse-widget-shell': 0.33.0(@miragon/pulse-ui@0.33.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(bpmn-js@18.33.1)(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(typescript@5.9.3))(@modelcontextprotocol/client@2.4.0)(@modelcontextprotocol/core@2.4.0)(@tanstack/react-query@5.107.2(@types/react@19.3.0)(react@19.3.1))(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(zod@4.6.7)
       bpmn-js: 18.33.1
       zod: 4.6.7
     optionalDependencies:
-      '@miragon/pulse-blocks': 0.32.0(@miragon/pulse-engine-core@0.32.0)(@miragon/pulse-ui@0.32.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(bpmn-js@18.33.1)(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(typescript@5.9.3))(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
-      '@miragon/pulse-ui': 0.32.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(bpmn-js@18.33.1)(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(typescript@5.9.3)
+      '@miragon/pulse-blocks': 0.33.0(@miragon/pulse-engine-core@0.33.0)(@miragon/pulse-ui@0.33.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(bpmn-js@18.33.1)(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(typescript@5.9.3))(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+      '@miragon/pulse-ui': 0.33.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(bpmn-js@18.33.1)(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(typescript@5.9.3)
       lucide-react: 1.73.0(@types/react@19.3.0)(react@19.3.1)
       react: 19.3.1
       react-dom: 19.3.1(react@19.3.1)
 
-  '@miragon/pulse-engine-core@0.32.0': {}
+  '@miragon/pulse-engine-core@0.33.0': {}
 
-  '@miragon/pulse-http@0.32.0': {}
+  '@miragon/pulse-http@0.33.0': {}
 
-  '@miragon/pulse-profile@0.32.0': {}
+  '@miragon/pulse-profile@0.33.0': {}
 
-  '@miragon/pulse-screens@0.32.0(@miragon/pulse-board@0.32.0(@miragon/pulse-engine-core@0.32.0))(@miragon/pulse-engine-core@0.32.0)':
+  '@miragon/pulse-screens@0.33.0(@miragon/pulse-board@0.33.0(@miragon/pulse-engine-core@0.33.0))(@miragon/pulse-engine-core@0.33.0)':
     optionalDependencies:
-      '@miragon/pulse-board': 0.32.0(@miragon/pulse-engine-core@0.32.0)
-      '@miragon/pulse-engine-core': 0.32.0
+      '@miragon/pulse-board': 0.33.0(@miragon/pulse-engine-core@0.33.0)
+      '@miragon/pulse-engine-core': 0.33.0
 
-  '@miragon/pulse-ui@0.32.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(bpmn-js@18.33.1)(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(typescript@5.9.3)':
+  '@miragon/pulse-ui@0.33.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(bpmn-js@18.33.1)(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(typescript@5.9.3)':
     dependencies:
       '@fontsource-variable/geist': 5.3.0
       '@fontsource-variable/geist-mono': 5.3.0
@@ -2834,11 +2834,11 @@ snapshots:
       - '@types/react'
       - '@types/react-dom'
 
-  '@miragon/pulse-widget-shell@0.32.0(@miragon/pulse-ui@0.32.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(bpmn-js@18.33.1)(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(typescript@5.9.3))(@modelcontextprotocol/client@2.4.0)(@modelcontextprotocol/core@2.4.0)(@tanstack/react-query@5.107.2(@types/react@19.3.0)(react@19.3.1))(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(zod@4.6.7)':
+  '@miragon/pulse-widget-shell@0.33.0(@miragon/pulse-ui@0.33.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(bpmn-js@18.33.1)(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(typescript@5.9.3))(@modelcontextprotocol/client@2.4.0)(@modelcontextprotocol/core@2.4.0)(@tanstack/react-query@5.107.2(@types/react@19.3.0)(react@19.3.1))(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(zod@4.6.7)':
     dependencies:
       '@fontsource-variable/geist': 5.3.0
       '@fontsource-variable/geist-mono': 5.3.0
-      '@miragon/pulse-http': 0.32.0
+      '@miragon/pulse-http': 0.33.0
       '@modelcontextprotocol/ext-apps': 2.0.4(@modelcontextprotocol/client@2.4.0)(@modelcontextprotocol/core@2.4.0)(@modelcontextprotocol/server@2.4.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(zod@4.6.7)
       '@modelcontextprotocol/node': 2.1.2(@modelcontextprotocol/server@2.4.0)
       '@modelcontextprotocol/server': 2.4.0
@@ -2847,7 +2847,7 @@ snapshots:
       prom-client: 15.1.3
       zod: 4.6.7
     optionalDependencies:
-      '@miragon/pulse-ui': 0.32.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(bpmn-js@18.33.1)(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(typescript@5.9.3)
+      '@miragon/pulse-ui': 0.33.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(bpmn-js@18.33.1)(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(typescript@5.9.3)
       '@tanstack/react-query': 5.107.2(@types/react@19.3.0)(react@19.3.1)
       lucide-react: 1.73.0(@types/react@19.3.0)(react@19.3.1)
       react: 19.3.1
@@ -2889,7 +2889,7 @@ snapshots:
 
   '@modelcontextprotocol/inspector@2.16.0(@types/node@22.20.5)(@types/react@19.3.0)(esbuild@0.28.2)(jiti@2.7.0)(react-dom@19.3.1(react@19.3.1))(tsx@4.23.15)':
     dependencies:
-      '@hono/node-server': 2.1.11(hono@4.13.21)
+      '@hono/node-server': 2.1.11(hono@4.13.22)
       '@modelcontextprotocol/client': 2.4.0
       '@modelcontextprotocol/core': 2.4.0
       '@modelcontextprotocol/ext-apps': 2.0.4(@modelcontextprotocol/client@2.4.0)(@modelcontextprotocol/core@2.4.0)(@modelcontextprotocol/server@2.4.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(zod@4.6.7)
@@ -2901,7 +2901,7 @@ snapshots:
       atomically: 2.1.1
       chokidar: 4.0.3
       commander: 15.1.0
-      hono: 4.13.21
+      hono: 4.13.22
       ink: 6.8.0(@types/react@19.3.0)(react@19.3.1)
       open: 11.0.4
       pino: 9.14.0
@@ -3922,7 +3922,7 @@ snapshots:
 
   '@types/deep-eql@4.0.2': {}
 
-  '@types/estree@1.0.10': {}
+  '@types/estree@1.0.11': {}
 
   '@types/node@22.20.5':
     dependencies:
@@ -4175,7 +4175,7 @@ snapshots:
 
   estree-walker@3.0.3:
     dependencies:
-      '@types/estree': 1.0.10
+      '@types/estree': 1.0.11
 
   eventsource-parser@3.1.1: {}
 
@@ -4217,7 +4217,7 @@ snapshots:
 
   hono@4.13.19: {}
 
-  hono@4.13.21: {}
+  hono@4.13.22: {}
 
   htm@3.1.1: {}
 
@@ -4682,7 +4682,7 @@ snapshots:
 
   tinybench@6.2.5: {}
 
-  tinyexec@1.3.1: {}
+  tinyexec@1.4.0: {}
 
   tinyglobby@0.2.17:
     dependencies:
@@ -4751,7 +4751,7 @@ snapshots:
       picomatch: 4.0.7
       std-env: 4.3.0
       tinybench: 6.2.5
-      tinyexec: 1.3.1
+      tinyexec: 1.4.0
       tinyglobby: 0.2.17
       vite: 8.3.8(@types/node@22.20.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1)
       why-is-node-running: 3.2.1
